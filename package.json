@@ -1,0 +1,25 @@
+{
+  "name": "require-layer-parts",
+  "version": "0.0.1",
+  "description": "Node module to require multiples files based on a pattern.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "vows --spec test/*-test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bimedia-fr/require-layer-parts.git"
+  },
+  "keywords": [
+    "require",
+    "files",
+    "pattern",
+    "layer"
+  ],
+  "author": "jerome creignou",
+  "license": "Apache License V2",
+  "bugs": {
+    "url": "https://github.com/bimedia-fr/require-layer-parts/issues"
+  },
+  "homepage": "https://github.com/bimedia-fr/require-layer-parts"
+}
