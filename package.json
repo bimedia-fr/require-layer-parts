@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/bimedia-fr/require-layer-parts/issues"
   },
-  "homepage": "https://github.com/bimedia-fr/require-layer-parts"
+  "homepage": "https://github.com/bimedia-fr/require-layer-parts",
+  "dependencies": {
+    "glob": "^4.3.5"
+  }
 }
