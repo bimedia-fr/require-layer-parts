@@ -15,7 +15,7 @@ Example
 
 Given the following files :
 ```
-routes
+routes/
  |-- a-routes.js
  |-- b-routes.js
  |-- c-routes.js
