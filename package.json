@@ -1,10 +1,10 @@
 {
   "name": "require-layer-parts",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Node module to require multiples files based on a pattern.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "vows --spec test/*-test.js"
+    "test": "nodeunit test/*-test.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +24,8 @@
   "homepage": "https://github.com/bimedia-fr/require-layer-parts",
   "dependencies": {
     "glob": "^4.3.5"
+  },
+  "devDependencies": {
+    "nodeunit": "^0.9.0"
   }
 }
