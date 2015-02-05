@@ -9,3 +9,15 @@ module.exports.testSimplePattern = function (test) {
     test.ok(mods.b);
     test.done();
 };
+
+module.exports.testWithMapper = function (test) {
+    var p = parts(__dirname);
+    var mods = p.require('./**/*-routes.js', p.mapper(function (obj) {
+        obj.name = obj.name.toUpperCase();
+        return obj;
+    }));
+
+    test.ok(mods.A);
+    test.ok(mods.B);
+    test.done();
+};

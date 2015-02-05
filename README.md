@@ -26,9 +26,9 @@ index.js
 Now require every files that matches `-routes.js` to build your routes layer.
 
 ```js
-var parts = require('require-layer-parts');
+var parts = require('require-layer-parts')();
 
-parts().require('./**/*-routes.js');
+parts.require('./**/*-routes.js');
 
 //--> {a:[Function], b:[Function], c:[Function]}
 ```
@@ -41,9 +41,9 @@ Create an object than can require files with a glob pattern.
 
 
 ```js
-var parts = require('require-layer-parts');
+var parts = require('require-layer-parts')(__dirname);
 
-parts(__dirname).require('./**/*-routes.js');
+parts.require('./**/*-routes.js');
 
 //--> {a:[Function], b:[Function], c:[Function]}
 ```
@@ -59,15 +59,33 @@ Search for files matching a pattern and require it.
 
 
 ```js
-var parts = require('require-layer-parts');
+var parts = require('require-layer-parts')(__dirname);
 
-parts(__dirname).require('./**/*-routes.js', function(req) {
-    return req();
-});
+parts.require('./**/*-routes.js');
 
 //--> {a:[Function], b:[Function], c:[Function]}
 ```
 
 #### parameters
 * `string` glob search pattern
-* `mapper` mapping function to be applied after require.
+* `reducer` : optional reduce function to be applied on each element.
+
+
+### mapper
+
+Builds a reducer that apply a mapper on each require.
+
+```js
+var parts = require('require-layer-parts')(__dirname);
+
+parts.require('./**/*-routes.js', parts.mapper(function (obj) { return obj.name}));
+
+//--> {a:'a', b:'b', c:'c'}
+```
+
+#### parameters
+* `function` : a function that take an object with following properties:
+ * `file` : the absolute file name
+ * `name` : the name of the property on the resulting object as evaluated by the default namemapper.
+ * `mod` : the result of requiring the corresponding file.
+ 
