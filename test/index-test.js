@@ -21,3 +21,15 @@ module.exports.RequireWithMapper = function (test) {
     test.ok(mods.B);
     test.done();
 };
+
+
+module.exports.RequireInit = function (test) {
+    var p = parts(__dirname);
+    var mods = p.requireInit('./**/*-routes.js', function (obj) {
+        return obj.url;
+    });
+
+    test.equal(mods.a, 'a/a-routes');
+    test.equal(mods.b, 'b/b-routes');
+    test.done();
+};

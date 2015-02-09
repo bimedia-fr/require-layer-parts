@@ -89,3 +89,25 @@ parts.require('./**/*-routes.js', parts.mapper(function (obj) { return obj.name}
  * `name` : the name of the property on the resulting object as evaluated by the default namemapper.
  * `mod` : the result of requiring the corresponding file.
  
+ 
+ ### requireInit
+
+Much like require but it enables to map required module.
+
+
+```js
+var parts = require('require-layer-parts')(__dirname);
+
+parts.requireInit('./**/*-routes.js', function (mod) {
+    return mod();
+});
+
+//--> {a:{}, b:{}, c:{}}
+```
+* `string` glob search pattern
+* `mapper` : map function to be applied on each element module.
+ 
+#### parameters
+* `string` glob search pattern
+* `reducer` : optional reduce function to be applied on each element.
+ 

@@ -1,1 +1,1 @@
-module.exports = { name : 'a/a-routes'};
+module.exports = { url : 'a/a-routes'};
