@@ -90,7 +90,7 @@ parts.require('./**/*-routes.js', parts.mapper(function (obj) { return obj.name}
  * `mod` : the result of requiring the corresponding file.
  
  
- ### requireInit
+### requireInit
 
 Much like require but it enables to map required module.
 
