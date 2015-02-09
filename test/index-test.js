@@ -3,14 +3,14 @@
 
 var parts = require('../lib');
 
-module.exports.testSimplePattern = function (test) {
+module.exports.SimplePattern = function (test) {
     var mods = parts(__dirname).require('./**/*-routes.js');
     test.ok(mods.a);
     test.ok(mods.b);
     test.done();
 };
 
-module.exports.testWithMapper = function (test) {
+module.exports.RequireWithMapper = function (test) {
     var p = parts(__dirname);
     var mods = p.require('./**/*-routes.js', p.mapper(function (obj) {
         obj.name = obj.name.toUpperCase();
