@@ -1,35 +1,48 @@
-/*jslint node : true, nomen: true, plusplus: true, vars: true, eqeq: true,*/
-"use strict";
-
-var parts = require('../lib');
-
-module.exports.SimplePattern = function (test) {
-    var mods = parts(__dirname).require('./**/*-routes.js');
-    test.ok(mods.a);
-    test.ok(mods.b);
-    test.done();
-};
-
-module.exports.RequireWithMapper = function (test) {
-    var p = parts(__dirname);
-    var mods = p.require('./**/*-routes.js', p.mapper(function (obj) {
-        obj.name = obj.name.toUpperCase();
-        return obj;
-    }));
-
-    test.ok(mods.A);
-    test.ok(mods.B);
-    test.done();
-};
+let parts = require('../lib');
+let assert = require('assert');
 
 
-module.exports.RequireInit = function (test) {
-    var p = parts(__dirname);
-    var mods = p.requireInit('./**/*-routes.js', function (obj) {
-        return obj.url;
+describe('require-layer-parts', () => {
+    describe('single pattern', () => {
+        it('should require both files', (done) => {
+            var mods = parts(__dirname).require('./**/*-routes.js');
+            assert.ok(mods.a);
+            assert.ok(mods.b);
+            done();
+        });
     });
 
-    test.equal(mods.a, 'a/a-routes');
-    test.equal(mods.b, 'b/b-routes');
-    test.done();
-};
+    describe('require with mapper', () => {
+        it('should require both files and map result', (done) => {
+            let p = parts(__dirname);
+            var mods = p.require('./**/*-routes.js', p.mapper(function (obj) {
+                obj.name = obj.name.toUpperCase();
+                return obj;
+            }));
+        
+            assert.ok(mods.A);
+            assert.ok(mods.B);
+            done();
+        });
+    });
+
+    describe('require with init', () => {
+        it('should require files and call init function', (done) => {
+            var p = parts(__dirname);
+            var mods = p.requireInit('./**/*-routes.js', function (obj) {
+                return obj.url;
+            });
+        
+            assert.equal(mods.a, 'a/a-routes');
+            assert.equal(mods.b, 'b/b-routes');
+            done();
+        });
+    })
+});
+
+// module.exports.RequireWithMapper = function (test) {
+// };
+
+
+// module.exports.RequireInit = function (test) {
+// };

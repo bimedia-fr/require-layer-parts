@@ -4,7 +4,7 @@
   "description": "Node module to require multiples files based on a pattern.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "nodeunit test/*-test.js"
+    "test": "find test -type f -iname '*.test.js' | xargs nyc --reporter=lcov --reporter=text mocha"
   },
   "repository": {
     "type": "git",
@@ -23,9 +23,10 @@
   },
   "homepage": "https://github.com/bimedia-fr/require-layer-parts",
   "dependencies": {
-    "glob": "^4.3.5"
+    "glob": "^8.0.3"
   },
   "devDependencies": {
-    "nodeunit": "^0.9.0"
+    "mocha": "^10.2.0",
+    "nyc": "^15.1.0"
   }
 }
